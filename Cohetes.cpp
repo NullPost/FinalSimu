@@ -61,7 +61,7 @@ void Cohete::despegar(){
     FILE * pf2;
     float ymax = 0;
     float i = 0;
-    
+    // Esta parte es un asco pero no se como hacerlo de otra manera
     if(numCohetes==1){
         pf = fopen("posicion1.txt", "w");
     }
