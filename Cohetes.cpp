@@ -54,7 +54,7 @@ Cohete::Cohete(double E0, double tsfc, double CD, double Ar, double m0, double m
 }
 //despegue de Cohete
 void Cohete::despegar(){
-    float delta = 0.5;
+    float delta = 0.25;
     y = 0;
     vy = 0;
     FILE * pf;
@@ -79,8 +79,8 @@ void Cohete::despegar(){
     }if(numCohetes==3){
         pf2 = fopen("velocidad3.txt", "w");
     }
-    while(i < 720 && y >= 0){
-        
+    while(i < 1440 && y >= 0){
+    if(y>ymax)ymax=y;
     //bool f = is0(mf(delta*i,tsfc,E0,mf0));
     fprintf(pf2,"%lf\t%lf\n",delta*i,vy);
     fprintf(pf,"%lf\t%lf\n",delta*i, y );
@@ -93,7 +93,7 @@ void Cohete::despegar(){
         }
     fclose(pf);
     fclose(pf2);
-   
+    printf("Altura maxima de cohete %d: %lf\n",numCohetes,ymax);
 }
 
 
